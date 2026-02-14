@@ -1,1 +1,2 @@
 wing,棟
+minutes,議事録

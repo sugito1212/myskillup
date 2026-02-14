@@ -1,60 +1,57 @@
 import random
 from random import randint, randrange
 
-open_file = open("English_word.txt")
-data = open_file.read()
-open_file.close()
-words_data = data.splitlines()
-#print(words_data)
+# ファイルの読み込み
+try:
+    with open("english_word.txt","r",encoding="utf-8") as open_file:
+        words_data = open_file.read().splitlines()
+except FileNotFoundError:
+    print("エラー: english_word.txtが見つかりません")
 
+# データ整形
 English_dict = {}
-id = 1
-for line in words_data:
-    English, Japanese = line.split(",")
-    English_dict[id] = English, Japanese
-    id = id + 1
-#print(English_dict)
 
+for i,line in enumerate(words_data, 1):
+    if "," in line:
+        English, Japanese = line.split(",")
+        # 前後の余計な空白を削除しておく
+        English_dict[i] = (English.strip(), Japanese.strip())
 dict_len = len(English_dict)
 
+# 英単語テスト
 while True:
-    num = randint(1,dict_len)
-    English, Japanese = English_dict[num]
-    print("\n"+English+"\n")
-    dummy = input()
-    if dummy == "":
-        print(Japanese)
-    elif dummy == "end":
-        break
+    # 問題の選択
+    num = randint(1, dict_len)
+    correct_eng, correct_jp = English_dict[num]
+
+    # --- モード選択（英字を見て日本語を当てる or 日本語を見て英字を当てる） ---
+    # 0なら英→日、1なら日→英
+    mode = random.randint(0, 1)
+    
+    if mode == 0:
+        print(f"\n問題: {correct_eng}")
+        user_answer = input("日本語訳を入力してください: ").strip()
+        if user_answer.lower() == "end":
+            break
+        if user_answer == correct_jp:
+            print("正解")
+        else:
+            print(f" 残念、正解は「{correct_jp}」")
+            
     else:
+        print(f"\n問題: {correct_jp}")
+        user_answer = input("英単語を入力してください: ").strip()
+        if user_answer.lower() == "end":
+            break
+        # 英語の場合は大文字小文字を区別せずに判定するのが一般的です
+        if user_answer.lower() == correct_eng.lower():
+            print("正解")
+        else:
+            print(f"残念、正解は「{correct_eng}」")
+
+    # 次へ進むための入力
+    cont = input("\n--- Enterで次の問題へ（'end'で終了） ---")
+    if cont.lower() == "end":
         break
 
-    print("\n""--- Next --- "+"\n")
-    dummy = input()
-    if dummy == "":
-        print("")
-    elif dummy == "end":
-        break
-    else:
-        break
-
-    #日本語から英語
-    num = randint(1,dict_len)
-    English, Japanese = English_dict[num]
-    print("\n"+Japanese+"\n")
-    dummy = input()
-    if dummy == "":
-        print(English)
-    elif dummy == "end":
-        break
-    else:
-        break
-
-    print("\n""--- Next ---- "+"\n")
-    dummy = input()
-    if dummy == "":
-        print("")
-    elif dummy == "end":
-        break
-    else:
-        break
+print("\nテスト終了")
