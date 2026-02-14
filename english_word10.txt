@@ -1,0 +1,17 @@
+proceeds,収入
+garment,衣服
+attire,衣服
+unload,降ろす
+malfunction,故障
+inclement,荒れ模様の
+wring,しぼる
+curb,縁石
+drowsiness,眠気
+crate,木箱
+itinerary,旅程
+patronage,ひいき
+dock,埠頭につける
+be propped against,に立てかけられている
+utensil,用具
+on the premises,敷地内で
+valuables,貴重品

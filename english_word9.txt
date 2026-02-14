@@ -1,0 +1,6 @@
+be carpeted,カーペットが敷かれている
+fine,罰金
+understaffed,人手不足の
+air,放送される
+land,手に入れる
+secure,固定する

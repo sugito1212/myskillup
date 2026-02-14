@@ -1,2 +1,9 @@
 wing,棟
 minutes,議事録
+patio,テラス
+cubicle,個人用スペース
+spokesperson,広報担当者
+terrific,素晴らしい
+representative,代表者
+reception,宴会
+distraction,気をそらすもの

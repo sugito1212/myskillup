@@ -1,12 +1,21 @@
+import sys
 import random
 from random import randint, randrange
 
+# コマンドライン引数
+if len(sys.argv) < 2:
+    print("使用法: python script.py <ファイル名>")
+    sys.exit()
+
+# 引数の1番目（0番目はスクリプト名）をファイル名として取得
+target_file = sys.argv[1]
 # ファイルの読み込み
 try:
-    with open("english_word.txt","r",encoding="utf-8") as open_file:
+    with open(target_file,"r",encoding="utf-8") as open_file:
         words_data = open_file.read().splitlines()
 except FileNotFoundError:
-    print("エラー: english_word.txtが見つかりません")
+    print("エラー: {target_file}が見つかりません")
+    sys.exit
 
 # データ整形
 English_dict = {}
