@@ -1,7 +1,7 @@
 import random
 from random import randint, randrange
 
-open_file = open("English_words.txt")
+open_file = open("English_word.txt")
 data = open_file.read()
 open_file.close()
 words_data = data.splitlines()
